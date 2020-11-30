@@ -124,14 +124,13 @@ LEN is the length of the replaced string."
 (define-minor-mode goggles-mode "Pulse modified regions."
   :global t
   :lighter " Goggles"
-  (if goggles-mode
-      (progn
-        (add-hook 'post-command-hook #'goggles--post-command)
-        (add-hook 'after-change-functions #'goggles--after-change)
-        (mapc #'funcall goggles--list))
-    (remove-hook 'post-command-hook #'goggles--post-command)
-    (remove-hook 'after-change-functions #'goggles--after-change)
-    (mapc (lambda (f) (funcall f t)) goggles--list)))
+  (remove-hook 'post-command-hook #'goggles--post-command)
+  (remove-hook 'after-change-functions #'goggles--after-change)
+  (mapc (lambda (f) (funcall f t)) goggles--list)
+  (when goggles-mode
+    (add-hook 'post-command-hook #'goggles--post-command)
+    (add-hook 'after-change-functions #'goggles--after-change)
+    (mapc #'funcall goggles--list)))
 
 (goggles undo primitive-undo)
 (goggles yank yank yank-pop)
