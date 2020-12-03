@@ -101,7 +101,9 @@ LEN is the length of the replaced string."
       (setq end (1+ start)))
     (push (make-overlay start end nil t nil) goggles--changes)))
 
-(defmacro goggles (name &rest funs)
+;;;; Define goggles
+
+(defmacro defgoggles (name &rest funs)
   "Define goggles NAME for functions FUNS."
   (let ((name (intern (format "goggles-%s" name))))
     `(progn
@@ -120,6 +122,15 @@ LEN is the length of the replaced string."
          nil)
        (push #',name goggles--list))))
 
+;;;; Define some standard goggles
+
+(defgoggles undo primitive-undo)
+(defgoggles yank yank yank-pop)
+(defgoggles kill kill-region)
+(defgoggles delete delete-region)
+
+;;;; Goggles mode which activates all the defined goggles
+
 ;;;###autoload
 (define-minor-mode goggles-mode "Pulse modified regions."
   :global t
@@ -131,11 +142,6 @@ LEN is the length of the replaced string."
     (add-hook 'post-command-hook #'goggles--post-command)
     (add-hook 'after-change-functions #'goggles--after-change)
     (mapc #'funcall goggles--list)))
-
-(goggles undo primitive-undo)
-(goggles yank yank yank-pop)
-(goggles kill kill-region)
-(goggles delete delete-region)
 
 (provide 'goggles)
 
