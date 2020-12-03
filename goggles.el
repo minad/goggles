@@ -53,12 +53,12 @@
 
 ;;;; Customization
 
-(defcustom goggles-pulse-iterations 15
+(defcustom goggles-pulse-iterations pulse-iterations
   "Number of iterations in a pulse operation."
   :group 'goggles
   :type 'number)
 
-(defcustom goggles-pulse-delay .02
+(defcustom goggles-pulse-delay pulse-delay
   "Delay between face lightening iterations."
   :group 'goggles
   :type 'number)
