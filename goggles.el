@@ -30,6 +30,8 @@
 
 (require 'pulse)
 
+;;;; Faces
+
 (defgroup goggles nil
   "Pulse modified regions."
   :group 'editing)
@@ -49,6 +51,8 @@
   "Face for highlighting added text."
   :group 'goggles)
 
+;;;; Customization
+
 (defcustom goggles-pulse-iterations 15
   "Number of iterations in a pulse operation."
   :group 'goggles
@@ -64,13 +68,29 @@
   :group 'goggles
   :type 'boolean)
 
-(defvar goggles--active 0)
-(defvar goggles--changes nil)
-(defvar goggles--delta 0)
-(defvar goggles--list nil)
+;;;; Internal variables
+
+(defvar goggles--active 0
+  "Number of active goggles, which can be nested.
+If the number is greater than zero, the changes are tracked
+in order to pulse the changed region in the end.")
+
+(defvar goggles--changes nil
+  "Log of changed regions.")
+
+(defvar goggles--delta 0
+  "Total number of changed characters.
+Positive if characters have been added.
+Negative if characters have been deleted.
+Zero if characters have been modified.")
+
+(defvar goggles--list nil
+  "List of defined goggles, see `defgoggle'.")
+
+;;;; Hooks for logging the changes and pulsing the changed region
 
 (defun goggles--post-command ()
-  "Highlight changes after command."
+  "Highlight change after command."
   (when goggles--changes
     (let ((start most-positive-fixnum)
           (end 0)
@@ -92,6 +112,8 @@
 
 (defun goggles--after-change (start end len)
   "Remember changed region between START and END.
+The endpoints of the changed region are pushed to
+the change log `goggles--changes'.
 LEN is the length of the replaced string."
   (when (> goggles--active 0)
     (setq goggles--delta (+ goggles--delta (- end start len)))
