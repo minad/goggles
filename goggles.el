@@ -111,7 +111,9 @@ Zero if characters have been modified.")
           (pulse-flag goggles-pulse))
       (dolist (change goggles--changes)
         (setq start (min start (car change))
-              end (max end (cdr change))))
+              end (max end (cdr change)))
+        (set-marker (car change) nil)
+        (set-marker (cdr change) nil))
       (pulse-momentary-highlight-region
        start end
        (cond
