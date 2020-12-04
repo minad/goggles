@@ -97,10 +97,9 @@ Zero if characters have been modified.")
           (pulse-delay goggles-pulse-delay)
           (pulse-iterations goggles-pulse-iterations)
           (pulse-flag goggles-pulse))
-      (dolist (ovl goggles--changes)
-        (setq start (min start (overlay-start ovl))
-              end (max end (overlay-end ovl)))
-        (delete-overlay ovl))
+      (dolist (change goggles--changes)
+        (setq start (min start (car change))
+              end (max end (cdr change))))
       (pulse-momentary-highlight-region
        start end
        (cond
@@ -121,7 +120,9 @@ LEN is the length of the replaced string."
       (when (> start (buffer-size))
         (setq start (- start 1)))
       (setq end (1+ start)))
-    (push (make-overlay start end nil t nil) goggles--changes)))
+    (push (cons (set-marker (make-marker) start)
+                (set-marker (make-marker) end))
+          goggles--changes)))
 
 ;;;; Define goggles
 
