@@ -4,7 +4,7 @@
 ;; Created: 2020
 ;; License: GPL-3.0-or-later
 ;; Version: 0.1
-;; Package-Requires: ((emacs "27"))
+;; Package-Requires: ((emacs "26"))
 ;; Homepage: https://github.com/minad/goggles
 
 ;; This file is not part of GNU Emacs.
@@ -79,18 +79,18 @@
 
 ;;;; Internal variables
 
-(defvar goggles--active 0
+(defvar-local goggles--active 0
   "Number of active goggles, which can be nested.
 If the number is greater than zero, the changes are tracked
 in order to pulse the changed region in the end.")
 
-(defvar goggles--changes nil
+(defvar-local goggles--changes nil
   "List of changed regions (change log).
 Each element is a pair of start/end markers.
 In order to show the highlighting, the change log is used
 to compute the overall start and end position.")
 
-(defvar goggles--delta 0
+(defvar-local goggles--delta 0
   "Total number of changed characters.
 Positive if characters have been added.
 Negative if characters have been deleted.
