@@ -37,17 +37,26 @@
   :group 'editing)
 
 (defface goggles-changed
-  '((t (:background "DeepSkyBlue")))
-  "Face used highlighting changed text."
+  '((((class color) (background dark))
+     :background "#1A1A3A")
+    (t
+     :background "#CBD6FF"))
+  "Face for highlighting changed text."
   :group 'goggles)
 
 (defface goggles-removed
-  '((t (:background "IndianRed" :extend t)))
+  '((((class color) (background dark))
+     :background "#3A1A1A" :extend t)
+    (t
+     :background "#FFCBCB" :extend t))
   "Face for highlighting removed text."
   :group 'goggles)
 
 (defface goggles-added
-  '((t (:background "MediumSeaGreen")))
+  '((((class color) (background dark))
+     :background "#203A1A")
+    (t
+     :background "#CBFFDC"))
   "Face for highlighting added text."
   :group 'goggles)
 
