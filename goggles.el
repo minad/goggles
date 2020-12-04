@@ -85,7 +85,10 @@ If the number is greater than zero, the changes are tracked
 in order to pulse the changed region in the end.")
 
 (defvar goggles--changes nil
-  "Log of changed regions.")
+  "List of changed regions (change log).
+Each element is a pair of start/end markers.
+In order to show the highlighting, the change log is used
+to compute the overall start and end position.")
 
 (defvar goggles--delta 0
   "Total number of changed characters.
