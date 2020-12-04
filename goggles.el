@@ -127,7 +127,18 @@ LEN is the length of the replaced string."
 ;;;; Define goggles
 
 (defmacro defgoggles (name &rest funs)
-  "Define goggles NAME for functions FUNS."
+  "Define goggles with NAME which is activated by the functions FUNS.
+
+For example (defgoggles kill `kill-region') defines
+the goggles function `goggles-kill' which is only activated
+by the `kill-region' operation.
+
+The function `goggles-kill' takes an optional argument DISABLE.
+If called without argument, the goggles are activated,
+if called with the argument t, the goggles are deactivated.
+
+This allows to individually define goggles based on operations
+and activate/deactivate them seperately."
   (let ((name (intern (format "goggles-%s" name))))
     `(progn
        ,@(mapcar
@@ -155,7 +166,10 @@ LEN is the length of the replaced string."
 ;;;; Goggles mode which activates all the defined goggles
 
 ;;;###autoload
-(define-minor-mode goggles-mode "Pulse modified regions."
+(define-minor-mode goggles-mode
+  "The goggles global minor mode pulses modified regions.
+The defined goggles (see `defgoggles') can be enabled/disabled individually
+in case you prefer to have goggles only for certain operations."
   :global t
   :lighter " Goggles"
   (remove-hook 'post-command-hook #'goggles--post-command)
