@@ -41,40 +41,34 @@
      :background "#1A1A3A")
     (t
      :background "#CBD6FF"))
-  "Face for highlighting changed text."
-  :group 'goggles)
+  "Face for highlighting changed text.")
 
 (defface goggles-removed
   '((((class color) (background dark))
      :background "#3A1A1A" :extend t)
     (t
      :background "#FFCBCB" :extend t))
-  "Face for highlighting removed text."
-  :group 'goggles)
+  "Face for highlighting removed text.")
 
 (defface goggles-added
   '((((class color) (background dark))
      :background "#203A1A")
     (t
      :background "#CBFFDC"))
-  "Face for highlighting added text."
-  :group 'goggles)
+  "Face for highlighting added text.")
 
 ;;;; Customization
 
 (defcustom goggles-pulse-iterations pulse-iterations
   "Number of iterations in a pulse operation."
-  :group 'goggles
   :type 'number)
 
 (defcustom goggles-pulse-delay pulse-delay
   "Delay between face lightening iterations."
-  :group 'goggles
   :type 'number)
 
 (defcustom goggles-pulse t
   "Enable pulsing."
-  :group 'goggles
   :type 'boolean)
 
 ;;;; Internal variables
