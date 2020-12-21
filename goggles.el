@@ -37,24 +37,28 @@
   :group 'editing)
 
 (defface goggles-changed
-  '((((class color) (background dark))
-     :background "#1A1A3A")
-    (t
-     :background "#CBD6FF"))
+  '((((class color) (min-colors 88) (background dark))
+     :background "#1a0f44")
+    (((class color) (min-colors 88) (background light))
+     :background "#f2f0ff")
+    (t :background "blue"))
   "Face for highlighting changed text.")
 
 (defface goggles-removed
-  '((((class color) (background dark))
-     :background "#3A1A1A" :extend t)
-    (t
-     :background "#FFCBCB" :extend t))
+  '((default :extend t)
+    (((class color) (min-colors 88) (background dark))
+     :background "#31101f")
+    (((class color) (min-colors 88) (background light))
+     :background "#ffedf2")
+    (t :background "red"))
   "Face for highlighting removed text.")
 
 (defface goggles-added
-  '((((class color) (background dark))
-     :background "#203A1A")
-    (t
-     :background "#CBFFDC"))
+  '((((class color) (min-colors 88) (background dark))
+     :background "#1f461a")
+    (((class color) (min-colors 88) (background light))
+     :background "#e0ffe0")
+    (t :background "green"))
   "Face for highlighting added text.")
 
 ;;;; Customization
