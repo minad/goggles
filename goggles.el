@@ -132,9 +132,7 @@ LEN is the length of the replaced string."
       (when (> start (buffer-size))
         (setq start (- start 1)))
       (setq end (1+ start)))
-    (push (cons (set-marker (make-marker) start)
-                (set-marker (make-marker) end))
-          goggles--changes)))
+    (push (cons (copy-marker start) (copy-marker end)) goggles--changes)))
 
 ;;;; Define goggles
 
