@@ -161,7 +161,7 @@ and activate/deactivate them separately."
        (defun ,name (&optional disable)
          (interactive)
          (if disable
-             (progn ,@(mapcar (lambda (f) `(advice-remove #',f #',(intern (format "goggles--adv-%s" f)))) funs))
+             ,(macroexp-progn (mapcar (lambda (f) `(advice-remove #',f #',(intern (format "goggles--adv-%s" f)))) funs))
            ,@(mapcar (lambda (f) `(advice-add #',f :around #',(intern (format "goggles--adv-%s" f)))) funs))
          nil)
        (push #',name goggles--list))))
