@@ -94,9 +94,6 @@ Positive if characters have been added.
 Negative if characters have been deleted.
 Zero if characters have been modified.")
 
-(defvar goggles--list nil
-  "List of defined goggles, see `goggles-define'.")
-
 ;;;; Hooks for logging the changes and pulsing the changed region
 
 (defun goggles--post-command ()
@@ -134,6 +131,11 @@ LEN is the length of the replaced string."
       (setq end (1+ start)))
     (push (cons (copy-marker start) (copy-marker end)) goggles--changes)))
 
+(defun goggles--advice(orig &rest args)
+  "Advice around ORIG function with ARGS."
+  (let ((goggles--active (1+ goggles--active)))
+    (apply orig args)))
+
 ;;;; Define goggles
 
 (defmacro goggles-define (name &rest funs)
@@ -151,20 +153,13 @@ This allows to individually define goggles based on operations
 and activate/deactivate them separately."
   (let ((name (intern (format "goggles-%s" name))))
     `(progn
-       ,@(mapcar
-          (lambda (f)
-            `(defun ,(intern (format "goggles--adv-%s" f)) (orig &rest args)
-               (setq goggles--active (1+ goggles--active))
-               (unwind-protect (apply orig args)
-                 (setq goggles--active (- goggles--active 1)))))
-          funs)
        (defun ,name (&optional disable)
          (interactive)
          (if disable
-             ,(macroexp-progn (mapcar (lambda (f) `(advice-remove #',f #',(intern (format "goggles--adv-%s" f)))) funs))
-           ,@(mapcar (lambda (f) `(advice-add #',f :around #',(intern (format "goggles--adv-%s" f)))) funs))
+             ,(macroexp-progn (mapcar (lambda (f) `(advice-remove #',f #'goggles--advice)) funs))
+           ,@(mapcar (lambda (f) `(advice-add #',f :around  #'goggles--advice)) funs))
          nil)
-       (push #',name goggles--list))))
+       (,name))))
 
 ;;;; Define some standard goggles
 
@@ -177,18 +172,15 @@ and activate/deactivate them separately."
 
 ;;;###autoload
 (define-minor-mode goggles-mode
-  "The goggles global minor mode pulses modified regions.
+  "The goggles local minor mode pulses modified regions.
 The defined goggles (see `goggles-define') can be enabled/disabled individually
 in case you prefer to have goggles only for certain operations."
-  :global t
   :lighter " Goggles"
-  (remove-hook 'post-command-hook #'goggles--post-command)
-  (remove-hook 'after-change-functions #'goggles--after-change)
-  (mapc (lambda (f) (funcall f t)) goggles--list)
+  (remove-hook 'post-command-hook #'goggles--post-command 'local)
+  (remove-hook 'after-change-functions #'goggles--after-change 'local)
   (when goggles-mode
-    (add-hook 'post-command-hook #'goggles--post-command)
-    (add-hook 'after-change-functions #'goggles--after-change)
-    (mapc #'funcall goggles--list)))
+    (add-hook 'post-command-hook #'goggles--post-command nil 'local)
+    (add-hook 'after-change-functions #'goggles--after-change nil 'local)))
 
 (provide 'goggles)
 
