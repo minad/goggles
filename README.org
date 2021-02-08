@@ -16,12 +16,11 @@ similarily to the =volatile-highlights-mode=.
 ** Usage
 
 #+begin_src emacs-lisp
-(use-package goggles
-  :hook ((prog-mode . goggles-mode)
-         (text-mode . goggles-mode))
-  :config
-  (setq-default goggles-pulse t)) ;; set to nil to disable pulsing
-#+end_src emacs-lisp
+  (use-package goggles
+    :hook ((prog-mode text-mode) . goggles-mode)
+    :config
+    (setq-default goggles-pulse t)) ;; set to nil to disable pulsing
+#+end_src
 
 ** Comparison to volatile-highlights
 
