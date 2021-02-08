@@ -77,10 +77,8 @@
 
 ;;;; Internal variables
 
-(defvar-local goggles--active 0
-  "Number of active goggles, which can be nested.
-If the number is greater than zero, the changes are tracked
-in order to pulse the changed region in the end.")
+(defvar-local goggles--active nil
+  "Goggles are active.")
 
 (defvar-local goggles--changes nil
   "List of changed regions (change log).
@@ -123,7 +121,7 @@ Zero if characters have been modified.")
 The endpoints of the changed region are pushed to
 the change log `goggles--changes'.
 LEN is the length of the replaced string."
-  (when (> goggles--active 0)
+  (when goggles--active
     (setq goggles--delta (+ goggles--delta (- end start len)))
     (when (and (/= len 0) (= start end))
       (when (> start (buffer-size))
@@ -133,7 +131,7 @@ LEN is the length of the replaced string."
 
 (defun goggles--advice(orig &rest args)
   "Advice around ORIG function with ARGS."
-  (let ((goggles--active (1+ goggles--active)))
+  (let ((goggles--active t))
     (apply orig args)))
 
 ;;;; Define goggles
