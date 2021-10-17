@@ -1,6 +1,7 @@
 * goggles.el - Pulse modified region
 
-[[https://melpa.org/#/goggles][file:https://melpa.org/packages/goggles-badge.svg]]
+#+html: <a href="https://melpa.org/#/goggles"><img alt="MELPA" src="https://melpa.org/packages/goggles-badge.svg"/></a>
+#+html: <a href="https://stable.melpa.org/#/goggles"><img alt="MELPA Stable" src="https://stable.melpa.org/packages/goggles-badge.svg"/></a>
 
 Goggles highlights the modified region using =pulse=. Currently the
 commands undo, yank, kill and delete are supported.
