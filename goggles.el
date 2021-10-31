@@ -129,10 +129,10 @@ LEN is the length of the replaced string."
       (setq end (1+ start)))
     (push (cons (copy-marker start) (copy-marker end)) goggles--changes)))
 
-(defun goggles--advice(orig &rest args)
-  "Advice around ORIG function with ARGS."
+(defun goggles--advice(&rest args)
+  "Advice around original function with ARGS."
   (let ((goggles--active t))
-    (apply orig args)))
+    (apply args)))
 
 ;;;; Define goggles
 
