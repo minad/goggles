@@ -13,7 +13,7 @@ By setting =goggle-pulse= to =nil=, the =goggles-mode= behaves
 similarily to the =volatile-highlights-mode=.
 
 #+caption: goggles
-[[https://github.com/minad/goggles/blob/master/goggles.gif?raw=true]]
+[[https://github.com/minad/goggles/blob/main/goggles.gif?raw=true]]
 
 ** Usage
 
