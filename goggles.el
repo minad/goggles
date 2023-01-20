@@ -36,7 +36,9 @@
 
 (defgroup goggles nil
   "Pulse modified regions."
-  :group 'editing)
+  :link '(url-link "https://github.com/minad/goggles")
+  :group 'editing
+  :prefix "goggles-")
 
 (defface goggles-changed
   '((((class color) (min-colors 88) (background dark))
