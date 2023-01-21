@@ -36,7 +36,7 @@
 
 (defgroup goggles nil
   "Pulse modified regions."
-  :link '(url-link "https://github.com/minad/goggles")
+    :link '(url-link :tag "Homepage" "https://github.com/minad/goggles")
   :group 'editing
   :prefix "goggles-")
 
