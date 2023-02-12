@@ -2,9 +2,10 @@
 
 ;; Copyright (C) 2020-2023 Daniel Mendler
 
-;; Author: Daniel Mendler
+;; Author: Daniel Mendler <mail@daniel-mendler.de>
+;; Maintainer: Daniel Mendler <mail@daniel-mendler.de>
+;; SPDX-License-Identifier: GPL-3.0-or-later
 ;; Created: 2020
-;; License: GPL-3.0-or-later
 ;; Version: 0.2
 ;; Package-Requires: ((emacs "27.1"))
 ;; Homepage: https://github.com/minad/goggles
