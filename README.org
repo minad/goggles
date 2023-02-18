@@ -26,19 +26,14 @@ similarily to the =volatile-highlights-mode=.
 
 ** Comparison to volatile-highlights
 
-Goggles is mainly meant as a replacement for volatile-highlights (vhl), which is
-very popular, but has a few downsides from my perspective.
+Goggles is mainly meant as a replacement for the popular volatile-highlights
+(vhl).
 
 - vhl does not support pulse. The request to use pulse for modification
   highlighting has come up a few times (e.g. recently on reddit).
-- vhl is essentially unmaintained, no commit for 5 years.
-- vhl contains obsolete code (cl instead of cl-lib, old advice mechanism,
-  untested xemacs support)
-- I disagree with the way vhl written, which is unnecessarily
-  complicated. For example vhl contains an overly complicated extension
-  mechanism. This extension mechanism somehow seems to require unnecessary
-  bytecode compilation at startup.
+- vhl is unmaintained and contains obsolete code (e.g. cl instead of cl-lib).
+- vhl is unnecessarily complicated, with its extension mechanism. The extension
+  mechanism seems to require bytecode compilation at startup.
 
-Since improving volatile-highlights does not seem possible to me, except by a
-rewrite, I decided to create another package. This way breakage for
-volatile-highlights users is avoided.
+Since improving volatile-highlights would require a rewrite, I decided to create
+another package. This way breakage for volatile-highlights users is avoided.
