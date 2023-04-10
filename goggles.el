@@ -9,6 +9,7 @@
 ;; Version: 0.3
 ;; Package-Requires: ((emacs "27.1"))
 ;; Homepage: https://github.com/minad/goggles
+;; Keywords: convenience, wp
 
 ;; This file is not part of GNU Emacs.
 
