@@ -172,7 +172,7 @@ and activate/deactivate them separately."
 (goggles-define yank yank yank-pop)
 (goggles-define kill kill-region)
 (goggles-define delete delete-region)
-(goggles-define transpose transpose-words)
+(goggles-define transpose transpose-words transpose-chars transpose-lines)
 
 ;;;; Goggles mode which activates all the defined goggles
 
