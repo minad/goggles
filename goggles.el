@@ -8,7 +8,7 @@
 ;; Created: 2020
 ;; Version: 0.4
 ;; Package-Requires: ((emacs "27.1"))
-;; Homepage: https://github.com/minad/goggles
+;; URL: https://github.com/minad/goggles
 ;; Keywords: convenience, text
 
 ;; This file is not part of GNU Emacs.
@@ -38,7 +38,7 @@
 
 (defgroup goggles nil
   "Pulse modified regions."
-  :link '(url-link :tag "Homepage" "https://github.com/minad/goggles")
+  :link '(url-link :tag "Website" "https://github.com/minad/goggles")
   :link '(emacs-library-link :tag "Library Source" "goggles.el")
   :group 'editing
   :prefix "goggles-")
