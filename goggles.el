@@ -128,7 +128,7 @@ Zero if characters have been modified.")
 The endpoints of the changed region are pushed to
 the change log `goggles--changes'.
 LEN is the length of the replaced string."
-  (when goggles--active
+  (when (and goggles--active (> (abs len) 1))
     (setq goggles--delta (+ goggles--delta (- end start len)))
     (when (and (/= len 0) (= start end))
       (when (> start (buffer-size))
