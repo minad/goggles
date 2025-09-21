@@ -7,7 +7,7 @@
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 ;; Created: 2020
 ;; Version: 0.4
-;; Package-Requires: ((emacs "27.1"))
+;; Package-Requires: ((emacs "29.1"))
 ;; URL: https://github.com/minad/goggles
 ;; Keywords: convenience, text
 
