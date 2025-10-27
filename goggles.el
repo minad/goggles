@@ -1,13 +1,13 @@
 ;;; goggles.el --- Pulse modified regions -*- lexical-binding: t -*-
 
-;; Copyright (C) 2020-2024 Daniel Mendler
+;; Copyright (C) 2020-2025 Daniel Mendler
 
 ;; Author: Daniel Mendler <mail@daniel-mendler.de>
 ;; Maintainer: Daniel Mendler <mail@daniel-mendler.de>
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 ;; Created: 2020
 ;; Version: 0.4
-;; Package-Requires: ((emacs "27.1"))
+;; Package-Requires: ((emacs "29.1"))
 ;; URL: https://github.com/minad/goggles
 ;; Keywords: convenience, text
 
