@@ -1,8 +1,8 @@
 * goggles.el - Pulse modified region
 
 #+html: <a href="https://www.gnu.org/software/emacs/"><img alt="GNU Emacs" src="https://github.com/minad/corfu/blob/screenshots/emacs.svg?raw=true"/></a>
-#+html: <a href="https://melpa.org/#/goggles"><img alt="MELPA" src="https://melpa.org/packages/goggles-badge.svg"/></a>
-#+html: <a href="https://stable.melpa.org/#/goggles"><img alt="MELPA Stable" src="https://stable.melpa.org/packages/goggles-badge.svg"/></a>
+#+html: <a href="https://releases.melpa.org/#/goggles"><img alt="MELPA Releases" src="https://releases.melpa.org/packages/goggles-badge.svg"/></a>
+#+html: <a href="https://snapshots.melpa.org/#/goggles"><img alt="MELPA Snapshots" src="https://snapshots.melpa.org/packages/goggles-badge.svg"/></a>
 
 Goggles highlights the modified region using =pulse=. Currently the
 commands undo, yank, kill and delete are supported.
